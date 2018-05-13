@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>nasm杂谈 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="汇编">
+    <meta name="description" content="nasm汇编的自我总结">
+<meta name="keywords" content="汇编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nasm杂谈">
+<meta property="og:url" content="http://yoursite.com/2017/08/26/nasm/chapter1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="nasm汇编的自我总结">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/first.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/second.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/vhd-1.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/vhd-2.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/vhd-3.png">
+<meta property="og:updated_time" content="2018-01-20T14:04:43.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nasm杂谈">
+<meta name="twitter:description" content="nasm汇编的自我总结">
+<meta name="twitter:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/first.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">John Doe</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-about"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/contact"  >
+                <i class="icon icon-lg icon-contact"></i>
+                Contact
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">nasm杂谈</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">nasm杂谈</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-26T14:12:34.000Z" itemprop="datePublished" class="page-time">
+  2017-08-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nasm汇编学习/">nasm汇编学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考文献"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考文献</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#汇编语言简述"><span class="post-toc-number">2.</span> <span class="post-toc-text">汇编语言简述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#计算机的执行过程"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">计算机的执行过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#汇编语言的语法"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">汇编语言的语法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开发环境的准备"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">开发环境的准备</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一个漫长的Hello-World"><span class="post-toc-number">3.</span> <span class="post-toc-text">一个漫长的Hello World</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简单的入手"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">简单的入手</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打印Hello-World"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">打印Hello World</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无操作系统的Hello-World"><span class="post-toc-number">3.0.3.</span> <span class="post-toc-text">无操作系统的Hello World</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一些改进"><span class="post-toc-number">3.0.4.</span> <span class="post-toc-text">一些改进</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number">4.</span> <span class="post-toc-text">小结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-nasm/chapter1"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">nasm杂谈</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-26 22:12:34" datetime="2017-08-26T14:12:34.000Z"  itemprop="datePublished">2017-08-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nasm汇编学习/">nasm汇编学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>要说什么语言能最直观表达计算机的执行情况,那么除了几乎不可读的机器语言,便是汇编了.</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="https://book.douban.com/subject/20492528/" target="_blank" rel="noopener">x86汇编语言:从实模式到保护模式———李忠,王晓波,余洁著</a></li>
+<li><a href="https://book.douban.com/subject/25726019/" target="_blank" rel="noopener">汇编语言——–王爽</a></li>
+</ol>
+<h2 id="汇编语言简述"><a href="#汇编语言简述" class="headerlink" title="汇编语言简述"></a>汇编语言简述</h2><h4 id="计算机的执行过程"><a href="#计算机的执行过程" class="headerlink" title="计算机的执行过程"></a>计算机的执行过程</h4><p><strong>注:本段对于计算机执行过程的描述做了简化,实际过程可能远远复杂甚至完全不同</strong><br>计算机主要由cpu,主存,IO设备组成,它们通过总线将设备连接起来.cpu内部有一个触发器原件,    通过时钟脉冲的作用,每隔一段时间触发一次.触发时,根据cpu当时寄存器的状态,进行组合电路运算(所谓的运算,其实是将各个寄存器状态作为输入,然后通过组合电路后的输出作用与寄存器,在下一次运算前保持稳定).如果把cpu比做一个迭代器对象,寄存器比作其属性,其中有一个成员函数为根据当前状态运算下一个状态.如下为一个java模拟的cpu的运行的概念代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">CPU</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">next</span><span class="params">()</span></span>;<span class="comment">//cpu执行方法</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getFrequency</span><span class="params">()</span></span>;<span class="comment">//每隔多少ms执行一次,时间频率的倒数</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">intercept</span><span class="params">()</span></span>;<span class="comment">//中断,由特定的条件触发</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">X86CPU</span> <span class="keyword">implements</span> <span class="title">CPU</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> WIDTH = <span class="number">16</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> FREQUENCY = <span class="number">1000</span>;<span class="comment">//每隔1000ms执行一次</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">byte</span>[] ax = <span class="keyword">new</span> <span class="keyword">byte</span>[WIDTH];<span class="comment">//ax寄存器</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">byte</span>[] bx = <span class="keyword">new</span> <span class="keyword">byte</span>[WIDTH];<span class="comment">//bx寄存器</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> X86CPU <span class="title">createInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> X86CPU();<span class="comment">//可以进行一些初始化操作</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">next</span><span class="params">()</span></span>&#123;</span><br><span class="line">  	<span class="comment">//假设不识别任何指令,只进行寄存器+1操作</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;WIDTH;i++)&#123;</span><br><span class="line">    	ax[i]++;</span><br><span class="line">    	bx[i]++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">intercept</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//中断操作,设置寄存器的值,使得下一节拍后时候按照中断的指令执行</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getFrequency</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> FREQUENCY;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//打印各个寄存器的值</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">  	<span class="comment">//开机</span></span><br><span class="line">    <span class="keyword">final</span> CPU x86 = X86CPU.createInstance();</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> frequency = x86.getFrequency();</span><br><span class="line">    <span class="keyword">boolean</span> stop = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">while</span>(!stop)&#123;</span><br><span class="line">      x86.next();</span><br><span class="line">      System.out.println(x86);</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        Thread.sleep(frequency)</span><br><span class="line">      &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">      	<span class="comment">//异常处理</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//关机操作</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然,真实的情况远不是这么轻描淡写就能描述的,即使如jvm虚拟机那样的模拟器,使用高级语言来模拟也远远比这复杂,但即便如此,如果能很好的把要表达的重点简要说明出来也就够了.我们看到,在时钟脉冲的影响下,cpu电路有一次一次的执行,当然为了电路的稳定表示,时钟间隔是不会无穷小的,而时间隔越小,如何能做得更小取决于cpu的工艺和架构,显然越小,单位时间内可执行的指令数量更多.因此,主频是形容cpu性能的重要参数之一.</p>
+<p>接下来,我们看看每一节拍cpu干些什么事儿呢?在8086下cpu根据寄存器IP和CS,计算当前指令取得的地址,在这里,会出现编码的细节,比如指令有多长等,在这里不再扩展,我们只要知道,cpu能读到对应的指令即可.在这里,机器能够直接识别的指令,我们把他通过助记符的形式表达出来,就成为了汇编语言中的汇编指令.也就是说,<strong>汇编指令与机器指令是一一对应的</strong>,除此之外,汇编语言提供伪指令,来辅助汇编器生成机器码时候的一些操作,伪指令不会生成对应的机器指令,但是会产生对应操作的意义.<br>如下为一段汇编代码:<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0xFF</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">0x00</span>,<span class="number">0xFF</span>,<span class="number">0xFF</span></span><br></pre></td></tr></table></figure></p>
+<p>第一行为汇编指令,表示将0xFF传送到ax寄存器,第二行为伪指令,也就是生成的文件中,在上一行生成的二进制机器码之后,紧接着是0x00,0xFF,0xFF.而接下来的章节中,我会逐渐介绍各个汇编指令和伪指令</p>
+<h4 id="汇编语言的语法"><a href="#汇编语言的语法" class="headerlink" title="汇编语言的语法"></a>汇编语言的语法</h4><p>汇编语言作为机器语言的助记符,因此没有统一的语法规范,比较常见的语法是Intel语法和AT&amp;T语法,两类语法虽然不能但几乎都可以等效相互转换.因此选择其中一种语法学习即可.在GCC中可以内联AT&amp;T的汇编语言,而作为入门,我还是推荐使用nasm这个使用Intel的汇编器</p>
+<ol>
+<li>首先nasm是开源软件,且跨平台.写法较为直观.</li>
+<li>汇编后的机器码更干净</li>
+</ol>
+<h4 id="开发环境的准备"><a href="#开发环境的准备" class="headerlink" title="开发环境的准备"></a>开发环境的准备</h4><ol>
+<li>NASM 到其官网[<a href="http://www.nasm.us/]" target="_blank" rel="noopener">http://www.nasm.us/]</a> 下载,并配置环境变量即可</li>
+<li>虽然vim和emacs两大毒瘤我都在使用,但我就不安利了,一个趁手的文本编辑器即可.如:SublimeText3  VisualStudioCode等</li>
+<li>一个二进制文本阅读器,哈哈vim又万能的可用了.其他用户可使用hex fiend等工具进行查看</li>
+</ol>
+<h2 id="一个漫长的Hello-World"><a href="#一个漫长的Hello-World" class="headerlink" title="一个漫长的Hello World"></a>一个漫长的Hello World</h2><p>对汇编语言的helloworld绝对比其他语言漫长,这也是应该的,毕竟都在看汇编了,必然是希望把更多细节层面的东西掌握住</p>
+<h4 id="简单的入手"><a href="#简单的入手" class="headerlink" title="简单的入手"></a>简单的入手</h4><p>先试试看随意打印下代码<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;; test.asm</span></span><br><span class="line"><span class="built_in">db</span> <span class="string">"hello world"</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">0x01</span>,<span class="number">0x02</span>,<span class="number">0x03</span>,<span class="number">0x04</span>,<span class="number">0x05</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">05</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">07</span></span><br></pre></td></tr></table></figure></p>
+<p>在终端输入 <code>nasm test.asm</code>进行编译,接下来用hex fiend打开生成的二进制文件<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="chapter1/first.png" alt="汇编后的二进制文件" title="">
+                </div>
+                <div class="image-caption">汇编后的二进制文件</div>
+            </figure></p>
+<p>显然 伪指令db将后面的<code>&quot;hello world&quot;</code>转换为ASCII编码后依次写入文件</p>
+<p>第二行的伪指令做了类似作用,将<code>0x01,0x02,0x03,0x04,0x05</code>依次写入文件</p>
+<p>根据分析,<code>mov ax,05</code>变成了<code>B80500</code>,而<code>mov bx,07</code>则变成了<code>BB0700</code></p>
+<p>可以看出:<strong>不管是具有意义的指令,寄存器编号,还是占位的数据,在计算机中都是等价看待的</strong></p>
+<p>cpu在执行过程中,不停取指令执行指令的过程中,如果取得的指令没有意义,显然是会发生的,这时候会以中断的形式产生异常,而正常运行过程中,我们只要保证cpu加电后第一条指令是有意义的,那么我们就能够通过人为编程的管理,使得程序中的数据和代码本身实现分离,正确的取解释他们.比如,我们传送一段数据到显存段,那么我们就有理由认为这段数据是表示显示内容的,至于是ASCII还是点阵,取决于我们设置的显卡工作模式.</p>
+<h4 id="打印Hello-World"><a href="#打印Hello-World" class="headerlink" title="打印Hello World"></a>打印Hello World</h4><p><a href="http://type.so/assembly/mac-nasm-helloworld.html" target="_blank" rel="noopener">参考博客</a></p>
+<p>很多编程语言的第一个代码都是在控制台上打印Hello World来实现的,汇编语言当然也能实现,当然也能加深你对c语言的认识.比如printf核心干了什么,你还是想弄清楚吧</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;;helloworld.asm</span></span><br><span class="line"><span class="meta">SECTION</span> .data</span><br><span class="line"></span><br><span class="line"><span class="symbol">msg:</span> <span class="built_in">db</span> <span class="string">"Hello World!"</span>, <span class="number">0x0a</span>	<span class="comment">;;要输出的内容,0x0a代表换行符</span></span><br><span class="line"><span class="symbol">len:</span> <span class="built_in">equ</span> $ - msg					<span class="comment">;;字符串长度</span></span><br><span class="line"></span><br><span class="line"><span class="meta">SECTION</span> .text</span><br><span class="line"><span class="meta">global</span> _main</span><br><span class="line"></span><br><span class="line"><span class="symbol">_main:</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">rax</span>,<span class="number">0x2000004</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">rdi</span>,<span class="number">1</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">rsi</span>,msg</span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">rdx</span>,len</span><br><span class="line">    <span class="keyword">syscall</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">rax</span>,<span class="number">0x2000001</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">rdi</span>,<span class="number">0</span></span><br><span class="line">    <span class="keyword">syscall</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码定义了一个数据段,使用系统调用将字符串打印出来,如何使用系统调用呢,就是这个syscall 当然,系统调用需要的”参数”则由寄存器提供,比如字符串长度,字符串地址,系统调用的类型等.其中rdi表示系统调用的编号,系统调用会产生一个中断,陷入内核程序,内核程序根据rdi分别执行不能的功能,所以rdi也叫做系统调用编号.</p>
+<p>系统调用编号可参考 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/hpa/linux-x86-syscalls.git/tree/include/asm-generic/unistd.h" target="_blank" rel="noopener">linux源码</a> ,也有网络分享的<a href="http://blog.csdn.net/sinat_26227857/article/details/44244433" target="_blank" rel="noopener">系统调用表</a></p>
+<p>本例中,分别调用write(系统调用编号1)写入相关数据,然后调用read(系统调用编号0)显示出来</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="chapter1/second.png" alt="编译链接运行" title="">
+                </div>
+                <div class="image-caption">编译链接运行</div>
+            </figure>
+<h4 id="无操作系统的Hello-World"><a href="#无操作系统的Hello-World" class="headerlink" title="无操作系统的Hello World"></a>无操作系统的Hello World</h4><p>​    显然,上面的代码依赖于系统调用,通过系统调用,内核程序将Hello World写入标准输入流中,标准输入流得到数据后,又通过系统调动进行显示.而这显然无法满足我们对只是的渴望,毕竟内核程序拿到一组ASCII数据后怎么显示在linux呢,其实很简单,无非就是把这些数据搬到显存里,显卡周期性读取显存的数据,显示到显示器上.而怎么写入显存呢,也很简单,显存区域和内存一样,对cpu来说都一样,都是通过地址按照操作内存的方式操作,无非是有一段区域地址里面是显存,一段里面是内存,也许还是一些别的,我们把这个叫做统一编址.</p>
+<p>​    但是,要模拟这个过程却要费些周折,因为我们的代码都是运行在<code>保护模式</code>下的,无法访问全部内存,因此,我们尝试用虚拟机,在没有进入保护模式前显示字符串,这个时候cpu工作在16位下,区域为0xB8000~0xBFFFF.而显卡在文本模式下,每两个字节显示一个字符,可以显示25行,每行80个字符共2000个字符4000个字节.表示字符的第一个字节表示要显示字符的ASCII编码,第二个字节表示一些显示属性,比如前景色背景色,闪烁灯.</p>
+<p>​    计算机启动时,会给cpu加电,并让cpu的cs,ip指向bios的程序,bios程序是写在rom里,通过<code>统一编地</code>,cpu也能像访问内存一样访问rom,唯一的区别是通过一般渠道,无法直接对rom进行更改.而bios程序启动后会检测计算机的硬件状态是否正常,能否工作,然后检查<code>主引导记录(MBR)</code>并加载.</p>
+<p>​    一台电脑有光盘,硬盘,软盘等各种设备存储设备,甚至有多个硬盘,硬盘还有很多分区.里面都有可能有有效的程序,但又不一定都要有.因此bios必须尝试找到其中有效的部分,再装载里面的程序.而是否有效这个<strong>标准</strong>也是并不是主要的,因此如果一个硬盘是有主引导记录的,那么bios就认为这个主引导记录是合法的,把他加载进去.</p>
+<p>​    一个有效的主引导记录是硬盘开头的512个字节,并且以<code>0x55</code>,<code>0xaa</code>结尾,那么系统就会去加载512字节,并放到内存为<code>0x7c00</code>的位置上,为什么是在这个位置,可能天知道了.</p>
+<p>​    当然现在真正的计算机可能是UEFI BIOS主板,硬盘分区可能是GPT分区,但是这并不影响我们去理解这个过程.具体可以翻阅相关文档或者参考grub2的源码即可.</p>
+<p>​    如下,为一个hello world的源码</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">;;helloworld2.asm</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0xb800</span>                 <span class="comment">;指向文本模式的显示缓冲区</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">;以下显示字符串"Hello world"</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x00</span>],<span class="string">'H'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x01</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x02</span>],<span class="string">'e'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x03</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x04</span>],<span class="string">'L'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x05</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x06</span>],<span class="string">'l'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x07</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x08</span>],<span class="string">'l'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x09</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x0a</span>],<span class="string">'o'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x0b</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x0c</span>],<span class="string">" "</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x0d</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x0e</span>],<span class="string">'W'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x0f</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x10</span>],<span class="string">'o'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x11</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x12</span>],<span class="string">'r'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x13</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x14</span>],<span class="string">'l'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x15</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x16</span>],<span class="string">'d'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x17</span>],<span class="number">0x07</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x18</span>],<span class="string">'!'</span></span><br><span class="line">  <span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="built_in">es</span>:<span class="number">0x19</span>],<span class="number">0x07</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">infi:</span> <span class="keyword">jmp</span> <span class="built_in">near</span> infi                 <span class="comment">;无限循环</span></span><br><span class="line"><span class="built_in">times</span> <span class="number">510</span>-($-$$) <span class="built_in">db</span> <span class="number">0</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">0x55</span>,<span class="number">0xaa</span></span><br></pre></td></tr></table></figure>
+<p>可以看到把es设置为<code>0xb800</code>,以此为段基地址,不停往显存写入数据,最后一个无限循环,后面通过补充0,最后把末尾的两个字节置为<code>0x55</code>和<code>0xaa</code>即可.接下来就是要把程序运行起来了,我们使用visual box,qemu等虚拟机程序执行即可,至于虚拟硬盘文件我们使用固定大小的.vhd即可,因为这个文件的规范比较简单,前面为硬盘的内容,末尾位虚拟硬盘的配置信息.所以我们只需要把我们的程序放到虚拟文件的前部,即可控制虚拟硬盘里的内容.<br>具体过程如下:</p>
+<ol>
+<li>首先编译 输入 <code>nasm helloworld2.asm</code> 得到helloworld2的二进制文件</li>
+<li>创建虚拟硬盘文件.如下<br><img src="chapter1/vhd-1.png" alt="第一步--选择vhd格式"><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="chapter1/vhd-2.png" alt="第二步--选择固定大小" title="">
+                </div>
+                <div class="image-caption">第二步--选择固定大小</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="chapter1/vhd-3.png" alt="第三部--输入大小" title="">
+                </div>
+                <div class="image-caption">第三部--输入大小</div>
+            </figure></li>
+<li>将生成的helloworld2写入虚拟硬盘文件的开头部分,这里我分享一个我自己的c++合并的源码<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//merge.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(argc &lt; <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Usage empty.vhd program [target.vhd]"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">ifstream <span class="title">emptyVHD</span><span class="params">(argv[<span class="number">0</span>],ios::binary)</span></span>;</span><br><span class="line">    <span class="function">ifstream <span class="title">program</span><span class="params">(argv[<span class="number">1</span>],ios::binary)</span></span>;</span><br><span class="line">    <span class="function">ofstream <span class="title">targetVHD</span><span class="params">(argc&gt;<span class="number">2</span> ? <span class="string">"target.vhd"</span> : argv[<span class="number">3</span>],ios::binary)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(emptyVHD.is_open() &amp;&amp; program.is_open() &amp;&amp; targetVHD.is_open())&#123;</span><br><span class="line">        <span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">while</span>(!program.eof() &amp;&amp; !emptyVHD.eof())&#123;</span><br><span class="line">            emptyVHD.read(buf, <span class="keyword">sizeof</span>(buf));</span><br><span class="line">            program.read(buf,<span class="keyword">sizeof</span>(buf));</span><br><span class="line">            targetVHD.write(buf,program.gcount());</span><br><span class="line">        &#125;</span><br><span class="line">        program.close();</span><br><span class="line">        <span class="keyword">while</span>(!emptyVHD.eof())&#123;</span><br><span class="line">            emptyVHD.read(buf, <span class="keyword">sizeof</span>(buf));</span><br><span class="line">            targetVHD.write(buf,emptyVHD.gcount());</span><br><span class="line">        &#125;</span><br><span class="line">        targetVHD.close();</span><br><span class="line">        emptyVHD.close();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"copy success"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//error</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"open files error"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用命令<code>./merge empty.vhd helloworld2 output.vhd</code>合并,接下来使用visualBox或者qemu启动生成的<code>output.vhd</code>即可.</p>
+<h4 id="一些改进"><a href="#一些改进" class="headerlink" title="一些改进"></a>一些改进</h4><p>可以看到,上面的程序虽然容易理解,但工程性并不好,以下是一个通过批量复制的方式的改进<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  jmp near start</span><br><span class="line">mytext:</span><br><span class="line">  db &apos;H&apos;,0x07,&apos;E&apos;,0x07,&apos;L&apos;,0x07,&apos;L&apos;,0x07,&apos;O&apos;,0x07,\</span><br><span class="line">  &apos; &apos;,0x07,&apos;W&apos;,0x07,&apos;O&apos;,0x07,\&apos;R&apos;,0x07,&apos;L&apos;,0x07,&apos;D&apos;,0x07</span><br><span class="line">start:</span><br><span class="line">  mov ax,0x7c0</span><br><span class="line">  mov ds,ax</span><br><span class="line"></span><br><span class="line">  mov ax,0xb800</span><br><span class="line">  mov es,ax</span><br><span class="line"></span><br><span class="line">  cld</span><br><span class="line">  mov si,mytext</span><br><span class="line">  mov di,0</span><br><span class="line">  mov cx,(number-start)/2</span><br><span class="line">  rep movsw</span><br><span class="line"></span><br><span class="line">  jmp near $</span><br><span class="line">  times 510-($-$$) db 0</span><br><span class="line">  db 0x55,0xaa</span><br></pre></td></tr></table></figure></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>今天,总结了下计算机的一些本应是基础的知识,却少有被人提及,包括一些本科教材,一上来就是各种寻址,各种模型机,却毫无实际作用,更是难以理解成书的逻辑,尽管现在去看能看懂的大多数,但是介绍一种东西的内在逻辑其实很重要.因此,我会更看重从前起下之间的逻辑连贯.但奈何语言功底较弱,希望多多包涵并指出.<strong>本博客集成的评论系统为disqus,自备梯子</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-01-20T14:04:43.876Z" itemprop="dateUpdated">2018-01-20 22:04:43</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/08/26/nasm/chapter1/" target="_blank" rel="external">http://yoursite.com/2017/08/26/nasm/chapter1/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="John Doe">
+            John Doe
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/汇编/">汇编</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/08/26/nasm/chapter1/&title=《nasm杂谈》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/08/26/nasm/chapter1/&title=《nasm杂谈》 — Hexo&source=
+要说什么语言能最直观表达计算机的执行情况,那么除了几乎不可读的机器语言,便是汇编了.
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/08/26/nasm/chapter1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nasm杂谈》 — Hexo&url=http://yoursite.com/2017/08/26/nasm/chapter1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/08/26/nasm/chapter1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/01/20/hello-world/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "QREExdEvtS5HfyjGjibmP1NQ-gzGzoHsz",
+            appKey: "c47jvcEnawgm9PJxxlQkdhSo",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>John Doe &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/08/26/nasm/chapter1/&title=《nasm杂谈》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/08/26/nasm/chapter1/&title=《nasm杂谈》 — Hexo&source=
+要说什么语言能最直观表达计算机的执行情况,那么除了几乎不可读的机器语言,便是汇编了.
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/08/26/nasm/chapter1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nasm杂谈》 — Hexo&url=http://yoursite.com/2017/08/26/nasm/chapter1/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/08/26/nasm/chapter1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aS26EQAxFUfa/6Y6UaQTcZ0PU5bo1arUS4BDJ8e848Pn8nrPP19+Qn/x7jjeODBkylmWQy5EbfMKTvqYbqgwZMjZgpEGWYPj35L43zyxDhgwZJyG4E3BJWJchQ4aMDqNW7qZBVoYMGTLSIpbgr69MAuvrtbgMGTIWZPQHA+99/tf5hgwZMr6S0Sk4efpIvm8VwDJkyBjNIKlYJ9XjCxZ8LQPV4jJkyBjEuG5m8SZ+p1nWaeHJkCFjNwZZoeCtsTTskrHo6R9AhgwZGzDSMpWkcWjo2B5e3tTiMmTIGMGoLVWQdLCTSvLiubUbIkOGjGUZvO317EmLahkyZOzM4M0vHpprd4zDrgwZMoYy0hWKtOnGE8RWmihDhozRDBLgeO+9E3bTyBlMZWXIkLE4oxZM0+WtNGjG15QhQ8ZoRm1XIV2Y4CGYtPxu/mPIkCFjMwYvR/lL4asbfFwhQ4aMHRidFYr0NrXfJa9VhgwZUxlPLUbUymB+blJDGTJkjGakTa40vSPlLhk/BKWyDBkyxjH4pdMEjo8wecl6+mwyZMgYzUjLy6eadKhxBgpdGTJk7MB46lEInjfgSCrZqsVlyJCxFKPT8KqFyP6Ys/U8MmTIWJZRW63g48Y3Ai7KGWXIkDGOwUcFaUOtxktbbzJkyJDRGUCmYb24XiZDhgwZD4VIvszBR6QyZMjYh1ErYp9q7tdWOoIphwwZMhZnpIMBXsqmK1+du8uQIWMo4wdRMQo/Z1I3igAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
