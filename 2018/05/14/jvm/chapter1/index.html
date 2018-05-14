@@ -29,24 +29,24 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="深入学习jvm">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/source-tree.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/full-source-tree.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/configure_success.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/build_finish.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/java_version.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/hello_world.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/vscode_openproject.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/vscode_plugin.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/c++_environment.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/cpu_x86.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/agent_osx.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/clion_javac.png">
-<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/clion_javac.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/source-tree.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/full-source-tree.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/configure_success.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/build_finish.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/java_version.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/hello_world.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/vscode_openproject.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/vscode_plugin.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/c++_environment.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/cpu_x86.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/agent_osx.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/clion_javac.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/clion_javac.png">
 <meta property="og:updated_time" content="2018-05-14T15:19:22.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="osx下编译openjdk10">
 <meta name="twitter:description" content="深入学习jvm">
-<meta name="twitter:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/chapter1/source-tree.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/source-tree.png">
     
         <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
     
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -234,14 +234,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[http_proxy]</span><br><span class="line">host=127.0.0.1:8580</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>下载完代码以后,内容如下所示</p>
-<p><img src="chapter1/source-tree.png" alt="目录结构"></p>
+<p><img src="/2018/05/14/jvm/chapter1/source-tree.png" alt="目录结构"></p>
 </li>
 <li><p>更多的源代码使用get_source.sh进行下载</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash ./get_source.sh</span><br></pre></td></tr></table></figure>
 <p>接着会下载剩余的openjdk源码</p>
 </li>
 <li><p>下载完后得到目录如下所示</p>
-<p><img src="chapter1/full-source-tree.png" alt="完整的代码"></p>
+<p><img src="/2018/05/14/jvm/chapter1/full-source-tree.png" alt="完整的代码"></p>
 </li>
 </ol>
 <h3 id="编译项目"><a href="#编译项目" class="headerlink" title="编译项目"></a>编译项目</h3><ol>
@@ -254,12 +254,12 @@
 <p>安装即可</p>
 </li>
 <li><p>运行configure成功后会有如下图显示</p>
-<p><img src="chapter1/configure_success.png" alt="运行configure成功后会有如下图显示"></p>
+<p><img src="/2018/05/14/jvm/chapter1/configure_success.png" alt="运行configure成功后会有如下图显示"></p>
 </li>
 <li><p>接着就是编译项目了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
 <p>接下来就等着CPU满载编译吧,当看到如下图后,编译就完成了</p>
-<p><img src="chapter1/build_finish.png" alt="辨已完成"></p>
+<p><img src="/2018/05/14/jvm/chapter1/build_finish.png" alt="辨已完成"></p>
 </li>
 <li><p>编译的目标文件生成在build/xxx 目录下xxx因编译选项的不同而异</p>
 </li>
@@ -269,7 +269,7 @@
 <li><p>查看java版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
 <p>如图所示</p>
-<p><img src="chapter1/java_version.png" alt="查看java版本"></p>
+<p><img src="/2018/05/14/jvm/chapter1/java_version.png" alt="查看java版本"></p>
 </li>
 <li><p>编译运行Hello World项目</p>
 <p>编写<code>Main.java</code>文件,如下:</p>
@@ -279,19 +279,19 @@
 <p>运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/java Main</span><br></pre></td></tr></table></figure>
 <p>如图所示</p>
-<p><img src="chapter1/hello_world.png" alt="helloworld"></p>
+<p><img src="/2018/05/14/jvm/chapter1/hello_world.png" alt="helloworld"></p>
 </li>
 </ol>
 <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><h4 id="在visual-studio-code中调试"><a href="#在visual-studio-code中调试" class="headerlink" title="在visual studio code中调试"></a>在visual studio code中调试</h4><p>​    visual studio code是一个功能适度的文本编辑器,用来浏览和debug代码非常合适,如下为将openjdk项目放在vscode中调试的教程</p>
 <ol>
 <li><p>用vscode打开openjdk10源码文件夹</p>
-<p><img src="chapter1/vscode_openproject.png" alt="vscode打开项目"></p>
+<p><img src="/2018/05/14/jvm/chapter1/vscode_openproject.png" alt="vscode打开项目"></p>
 </li>
 <li><p>安装c/c++插件</p>
-<p><img src="chapter1/vscode_plugin.png" alt="vscode安装c/c++插件"></p>
+<p><img src="/2018/05/14/jvm/chapter1/vscode_plugin.png" alt="vscode安装c/c++插件"></p>
 </li>
 <li><p>安装完插件后,会重新加载项目,加载后按ctrl + F5启动调试,初次调试选择C++环境,如下:</p>
-<p><img src="chapter1/c++_environment.png" alt="c++环境"></p>
+<p><img src="/2018/05/14/jvm/chapter1/c++_environment.png" alt="c++环境"></p>
 </li>
 <li><p>在弹出的launch.json中,配置相关运行参数,我的配置如下</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"编译java文件"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"build/macosx-x86_64-normal-server-slowdebug/jdk/bin/javac"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [<span class="string">"Main.java"</span>],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"lldb"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"运行java程序"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"build/macosx-x86_64-normal-server-slowdebug/jdk/bin/java"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [<span class="string">"Main"</span>],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"lldb"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -301,13 +301,13 @@
 <li><p>用clion 导入项目即可自动生成cmake项目</p>
 </li>
 <li><p>为了加快项目index,可仅勾选hotspot/src/cpu/x86即可</p>
-<p><img src="chapter1/cpu_x86.png" alt="仅勾选x86"></p>
+<p><img src="/2018/05/14/jvm/chapter1/cpu_x86.png" alt="仅勾选x86"></p>
 <p>在hotspot/src/jdk.hotspot.agent仅勾选macosx</p>
-<p><img src="chapter1/agent_osx.png" alt="操作系统macosx"></p>
+<p><img src="/2018/05/14/jvm/chapter1/agent_osx.png" alt="操作系统macosx"></p>
 </li>
 <li><p>添加运行调试项</p>
-<p><img src="chapter1/clion_javac.png" alt="编译HelloWorld"></p>
-<p><img src="chapter1/clion_javac.png" alt="运行HelloWorld"></p>
+<p><img src="/2018/05/14/jvm/chapter1/clion_javac.png" alt="编译HelloWorld"></p>
+<p><img src="/2018/05/14/jvm/chapter1/clion_javac.png" alt="运行HelloWorld"></p>
 <p>上面两个配置中,将Before Luanch的Build去掉,因为我们已经编译过一遍完整的项目,不需要启动前再次编译</p>
 </li>
 </ol>
@@ -319,7 +319,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-05-14T15:19:22.390Z" itemprop="dateUpdated">2018-05-14 23:19:22</time>
+    最終更新：<time datetime="2018-05-14T15:19:22.390Z" itemprop="dateUpdated">2018-05-14 23:19:22</time>
 </span><br>
 
 
@@ -508,7 +508,7 @@ osx下编译openjdk10
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">

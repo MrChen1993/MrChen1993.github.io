@@ -29,16 +29,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="nasm汇编的自我总结">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/first.png">
-<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/second.png">
-<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/vhd-1.png">
-<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/vhd-2.png">
-<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/vhd-3.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/first.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/second.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/vhd-1.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/vhd-2.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/vhd-3.png">
 <meta property="og:updated_time" content="2018-01-20T14:04:43.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nasm杂谈">
 <meta name="twitter:description" content="nasm汇编的自我总结">
-<meta name="twitter:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/chapter1/first.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/08/26/nasm/chapter1/first.png">
     
         <link rel="alternate" type="application/atom+xml" title="Hexo" href="/atom.xml">
     
@@ -118,7 +118,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -212,7 +212,7 @@
 <p>在终端输入 <code>nasm test.asm</code>进行编译,接下来用hex fiend打开生成的二进制文件<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="chapter1/first.png" alt="汇编后的二进制文件" title="">
+                    <img src="/2017/08/26/nasm/chapter1/first.png" alt="汇编后的二进制文件" title="">
                 </div>
                 <div class="image-caption">汇编后的二进制文件</div>
             </figure></p>
@@ -230,7 +230,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="chapter1/second.png" alt="编译链接运行" title="">
+                    <img src="/2017/08/26/nasm/chapter1/second.png" alt="编译链接运行" title="">
                 </div>
                 <div class="image-caption">编译链接运行</div>
             </figure>
@@ -245,17 +245,17 @@
 <p>可以看到把es设置为<code>0xb800</code>,以此为段基地址,不停往显存写入数据,最后一个无限循环,后面通过补充0,最后把末尾的两个字节置为<code>0x55</code>和<code>0xaa</code>即可.接下来就是要把程序运行起来了,我们使用visual box,qemu等虚拟机程序执行即可,至于虚拟硬盘文件我们使用固定大小的.vhd即可,因为这个文件的规范比较简单,前面为硬盘的内容,末尾位虚拟硬盘的配置信息.所以我们只需要把我们的程序放到虚拟文件的前部,即可控制虚拟硬盘里的内容.<br>具体过程如下:</p>
 <ol>
 <li>首先编译 输入 <code>nasm helloworld2.asm</code> 得到helloworld2的二进制文件</li>
-<li>创建虚拟硬盘文件.如下<br><img src="chapter1/vhd-1.png" alt="第一步--选择vhd格式"><figure class="image-bubble">
+<li>创建虚拟硬盘文件.如下<br><img src="/2017/08/26/nasm/chapter1/vhd-1.png" alt="第一步--选择vhd格式"><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="chapter1/vhd-2.png" alt="第二步--选择固定大小" title="">
+                    <img src="/2017/08/26/nasm/chapter1/vhd-2.png" alt="第二步--选择固定大小" title="">
                 </div>
                 <div class="image-caption">第二步--选择固定大小</div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="chapter1/vhd-3.png" alt="第三部--输入大小" title="">
+                    <img src="/2017/08/26/nasm/chapter1/vhd-3.png" alt="第三部--输入大小" title="">
                 </div>
                 <div class="image-caption">第三部--输入大小</div>
             </figure></li>
@@ -273,7 +273,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-01-20T14:04:43.876Z" itemprop="dateUpdated">2018-01-20 22:04:43</time>
+    最終更新：<time datetime="2018-01-20T14:04:43.876Z" itemprop="dateUpdated">2018-01-20 22:04:43</time>
 </span><br>
 
 
@@ -462,7 +462,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
