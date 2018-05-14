@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/agent_osx.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/clion_javac.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/14/jvm/chapter1/clion_javac.png">
-<meta property="og:updated_time" content="2018-05-14T15:19:22.390Z">
+<meta property="og:updated_time" content="2018-05-14T15:37:51.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="osx下编译openjdk10">
 <meta name="twitter:description" content="深入学习jvm">
@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -167,7 +167,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载源码"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">下载源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编译项目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">编译项目</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试"><span class="post-toc-number">2.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试"><span class="post-toc-number">3.</span> <span class="post-toc-text">调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在visual-studio-code中调试"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">在visual studio code中调试</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在CLion中调试"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">在CLion中调试</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#环境准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境准备</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下载源码"><span class="post-toc-number">2.</span> <span class="post-toc-text">下载源码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译项目"><span class="post-toc-number">3.</span> <span class="post-toc-text">编译项目</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#测试"><span class="post-toc-number">4.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#调试"><span class="post-toc-number">5.</span> <span class="post-toc-text">调试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在visual-studio-code中调试"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">在visual studio code中调试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在CLion中调试"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">在CLion中调试</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -197,7 +197,7 @@
 <p>osx下编译openjdk10</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><table>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><table>
 <thead>
 <tr>
 <th>软件</th>
@@ -223,7 +223,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h4><ol>
+<h1 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h1><ol>
 <li><p>openjdk代码使用Mercurial(hg)版本管理工具进行管理.用如下命令进行该工具的安装</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#brew install mercurial</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -244,7 +244,7 @@
 <p><img src="/2018/05/14/jvm/chapter1/full-source-tree.png" alt="完整的代码"></p>
 </li>
 </ol>
-<h3 id="编译项目"><a href="#编译项目" class="headerlink" title="编译项目"></a>编译项目</h3><ol>
+<h1 id="编译项目"><a href="#编译项目" class="headerlink" title="编译项目"></a>编译项目</h1><ol>
 <li><p>查看common/doc/build.html 了解相关参数</p>
 <p>我的生成命令为</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bash ./configure \</span><br><span class="line">--with-debug-level=slowdebug</span><br><span class="line">--with-target-bits=64 \</span><br><span class="line">--with-jobs=8 \</span><br><span class="line">--<span class="built_in">disable</span>-warnings-as-errors \</span><br><span class="line">--with-jvm-variants=server</span><br></pre></td></tr></table></figure>
@@ -264,7 +264,7 @@
 <li><p>编译的目标文件生成在build/xxx 目录下xxx因编译选项的不同而异</p>
 </li>
 </ol>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>在 <code>build/macosx-x86_64-normal-server-slowdebug/jdk</code>下</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>在 <code>build/macosx-x86_64-normal-server-slowdebug/jdk</code>下</p>
 <ol>
 <li><p>查看java版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
@@ -282,7 +282,7 @@
 <p><img src="/2018/05/14/jvm/chapter1/hello_world.png" alt="helloworld"></p>
 </li>
 </ol>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><h4 id="在visual-studio-code中调试"><a href="#在visual-studio-code中调试" class="headerlink" title="在visual studio code中调试"></a>在visual studio code中调试</h4><p>​    visual studio code是一个功能适度的文本编辑器,用来浏览和debug代码非常合适,如下为将openjdk项目放在vscode中调试的教程</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><h2 id="在visual-studio-code中调试"><a href="#在visual-studio-code中调试" class="headerlink" title="在visual studio code中调试"></a>在visual studio code中调试</h2><p>​    visual studio code是一个功能适度的文本编辑器,用来浏览和debug代码非常合适,如下为将openjdk项目放在vscode中调试的教程</p>
 <ol>
 <li><p>用vscode打开openjdk10源码文件夹</p>
 <p><img src="/2018/05/14/jvm/chapter1/vscode_openproject.png" alt="vscode打开项目"></p>
@@ -297,7 +297,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"编译java文件"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"build/macosx-x86_64-normal-server-slowdebug/jdk/bin/javac"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [<span class="string">"Main.java"</span>],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"lldb"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"运行java程序"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"build/macosx-x86_64-normal-server-slowdebug/jdk/bin/java"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [<span class="string">"Main"</span>],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"lldb"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="在CLion中调试"><a href="#在CLion中调试" class="headerlink" title="在CLion中调试"></a>在CLion中调试</h4><ol>
+<h2 id="在CLion中调试"><a href="#在CLion中调试" class="headerlink" title="在CLion中调试"></a>在CLion中调试</h2><ol>
 <li><p>用clion 导入项目即可自动生成cmake项目</p>
 </li>
 <li><p>为了加快项目index,可仅勾选hotspot/src/cpu/x86即可</p>
@@ -319,7 +319,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-05-14T15:19:22.390Z" itemprop="dateUpdated">2018-05-14 23:19:22</time>
+    Last updated: <time datetime="2018-05-14T15:37:51.307Z" itemprop="dateUpdated">2018-05-14 23:37:51</time>
 </span><br>
 
 
@@ -508,7 +508,7 @@ osx下编译openjdk10
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
